@@ -4,7 +4,6 @@ import { GetServerSideProps } from 'next';
 import styled from 'styled-components';
 import { Movie, getTrendingMovies, getRecommendedMovies } from '../services/api';
 import { MovieCard } from '../components/MovieCard';
-import { Loading } from '../components/Loading';
 import { GlobalStyle } from '../styles/GlobalStyle';
 import { useFavorites } from '../hooks/useFavorites';
 
