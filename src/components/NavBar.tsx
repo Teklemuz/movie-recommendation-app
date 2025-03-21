@@ -63,10 +63,6 @@ const Menu = styled.ul<MenuProps>`
   }
 `;
 
-const MenuWithoutIsOpen = styled(Menu).withConfig({
-  shouldForwardProp: (prop) => prop !== 'isOpen',
-})``;
-
 const MenuItem = styled.li`
   margin: 0;
 `;
@@ -125,10 +121,6 @@ const HamburgerButton = styled.button<HamburgerProps>`
   }
 `;
 
-const HamburgerButtonWithoutIsOpen = styled(HamburgerButton).withConfig({
-  shouldForwardProp: (prop) => prop !== 'isOpen',
-})``;
-
 const HamburgerIcon = styled.span<HamburgerProps>`
   position: absolute;
   width: 100%;
@@ -154,10 +146,6 @@ const HamburgerIcon = styled.span<HamburgerProps>`
   }
 `;
 
-const HamburgerIconWithoutIsOpen = styled(HamburgerIcon).withConfig({
-  shouldForwardProp: (prop) => prop !== 'isOpen',
-})``;
-
 const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
@@ -175,14 +163,14 @@ const NavBar = () => {
       <Link href="/">
         <Logo>MovieApp</Logo>
       </Link>
-      <HamburgerButtonWithoutIsOpen isOpen={menuOpen} onClick={toggleMenu}>
-        <HamburgerIconWithoutIsOpen isOpen={menuOpen} />
-        <HamburgerIconWithoutIsOpen isOpen={menuOpen} />
-        <HamburgerIconWithoutIsOpen isOpen={menuOpen} />
-      </HamburgerButtonWithoutIsOpen>
-      <MenuWithoutIsOpen isOpen={menuOpen}>
+      <HamburgerButton isOpen={menuOpen} onClick={toggleMenu}>
+        <HamburgerIcon isOpen={menuOpen} />
+        <HamburgerIcon isOpen={menuOpen} />
+        <HamburgerIcon isOpen={menuOpen} />
+      </HamburgerButton>
+      <Menu isOpen={menuOpen}>
         <MenuItem>
-          <MenuLink href="/" active={currentPath === '/'}>
+          <MenuLink href="/" active={currentPath === '/'}> {/* Corrected passing of the boolean */}
             Home
           </MenuLink>
         </MenuItem>
@@ -201,7 +189,7 @@ const NavBar = () => {
             Recommended
           </MenuLink>
         </MenuItem>
-      </MenuWithoutIsOpen>
+      </Menu>
       <SearchWrapper>
         <SearchInput type="text" placeholder="Search movies..." onChange={handleSearch} />
       </SearchWrapper>
