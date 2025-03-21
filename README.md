@@ -23,7 +23,7 @@ npm, yarn, pnpm, or bun package manager
 A TMDB API key (add to .env.local as NEXT_PUBLIC_TMDB_API_KEY)
 
 ## Gettind started
-# IInstallation
+# Installation
 1. Clone the repository:
 2. git clone <github.com/Teklemuz/movie-recommendation-app>
 cd movie-recommendation-app
