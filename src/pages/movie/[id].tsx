@@ -1,4 +1,3 @@
-//src/pages/movie/[id].tsx
 import { GetServerSideProps } from 'next';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
@@ -64,6 +63,13 @@ const Button = styled.button<{ isFavorite: boolean }>`
   }
 `;
 
+const ErrorMessage = styled.div`
+  color: #e63939;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 2rem;
+`;
+
 interface MovieDetailProps {
   movie: Movie | null;
   error: string | null;
@@ -83,7 +89,7 @@ export default function MoviePage({ movie, error }: MovieDetailProps) {
     setIsFavorite(!isFavorite);
   };
 
-  if (error) return <div>Error: {error}</div>;
+  if (error) return <ErrorMessage>Error: {error}</ErrorMessage>;
   if (!movie) return <Loading />;
 
   return (
